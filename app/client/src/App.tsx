@@ -4,27 +4,33 @@ import Home from './pages/Home'
 import Signin from './pages/(auth)/Signin'
 import Landing from './pages/Landing'
 import Verify from './pages/(auth)/Verify'
+import Onboard1 from './pages/(onboard)/Onboard1'
+import Onboard2 from './pages/(onboard)/Onboard2'
+import Onboard3 from './pages/(onboard)/Onboard3'
 
 function App() {
 
   return (
     <>
-     <Router>
-      <Routes>
+      <Router>
+        <Routes>
 
         // landing
-        <Route path='/' element={<Landing/>}/>
+          <Route path='/' element={<Landing />} />
 
         // home
-        <Route path="/home" element={<Home/>} />
+          <Route path="/home" element={<Home />} />
 
         // auth
-        <Route path="/signin" element={<Signin/>} />
-        <Route path="/signup" element={<Signin/>} />
-        <Route path="/verify" element={<Verify/>} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/signup" element={<Signin />} />
+          <Route path="/verify" element={<Verify />} />
+          <Route path="/onboard/1" element={<Onboard1 />} />
+          <Route path="/onboard/2" element={<Onboard2 />} />
+          <Route path="/onboard/3" element={<Onboard3 />} />
 
-      </Routes>
-     </Router>
+        </Routes>
+      </Router>
     </>
   )
 }
