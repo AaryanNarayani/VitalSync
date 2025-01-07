@@ -1,6 +1,6 @@
 function Verify() {
   return (
-    <div>Verify</div>
+    <h1 className="text-[--primary]">Verify</h1>
   )
 }
 
