@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #4299e1;
+  --secondary: #ddd1ff;
+  --ternary: #d6ff64;
+  --graytext: #8d8d8d;
+  --primary-background: #f7fafc;
+  --secondary-background: #f2fcff;
+  --ternary-background: #ddfabd;
+  --low: #48bb78;
+  --medium: #f6ad55;
+  --high: #f56565;
+  --light-text: #8d8d8d;
+  --button-gradient-1: linear-gradient(90deg, var(--secondary), var(--primary) 100%);
+
+  --bricolage: BricolageGrotesque;
+  --inter: Inter;
+}
