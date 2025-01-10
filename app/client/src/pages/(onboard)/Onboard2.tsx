@@ -57,10 +57,9 @@ const Onboard2 = () => {
               <Plus />
             </button>
           </div>
-          <div className="flex justify-end w-[95%] mt-4">
-            <button className="py-2 w-[30%] rounded-xl px-2 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90">
-              Skip
-            </button>
+
+          <div className='flex justify-end w-[87%] mt-4'>
+            <button className=" py-2 w-[30%] rounded-xl px-2 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90" >Skip</button>
           </div>
         </div>
       </div>
