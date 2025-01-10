@@ -8,6 +8,7 @@ import Onboard1 from './pages/(onboard)/Onboard1'
 import Onboard2 from './pages/(onboard)/Onboard2'
 import Onboard3 from './pages/(onboard)/Onboard3'
 import DashBoard from './pages/DashBoard'
+import Advisor from './pages/(advisor)/Advisor'
 
 function App() {
 
@@ -32,6 +33,10 @@ function App() {
           <Route path="/onboard/1" element={<Onboard1 />} />
           <Route path="/onboard/2" element={<Onboard2 />} />
           <Route path="/onboard/3" element={<Onboard3 />} />
+
+        //Advisor 
+          <Route path='/advisor' element={<Advisor/>}/>
+
 
         </Routes>
       </Router>
