@@ -161,6 +161,7 @@ const Onboard2 = () => {
                 <img src="/Onboarding/Onboard2.png" />
               </div>
             </div>
+
           </DrawerContent>
         </Drawer>
       </div>
