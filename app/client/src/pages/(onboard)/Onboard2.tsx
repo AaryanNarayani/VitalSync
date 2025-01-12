@@ -34,8 +34,6 @@ const Onboard2 = () => {
   const onboardState = useSelector((state: any) => state.onboardState);
   const [token, setToken] = useState('');
 
- 
-
   const setDeviceType = (deviceType: string) => {
     setdeviceNameSelected(deviceType);
     setdeviceTypeSelected(true);
@@ -62,10 +60,10 @@ const Onboard2 = () => {
 
   const handleSubmit = async () =>{
     try {
-      const response = await axios.post(`${BASE_URL}/api/v1/user/setInfo`, {},{
+      const response = await axios.post(`${BASE_URL}/api/v1/user/setInfo`, onboardState,{
         headers: {
-          Authorization: `Bearer ${token}`,}
-        
+          Authorization: `Bearer ${token}`,
+        }
       })
       toast.success(response.data.msg);
       window.location.href = '/home';

@@ -4,6 +4,7 @@ import crypto from "crypto";
 import passport from "passport";
 import nodemailer from "nodemailer";
 import jwt from "jsonwebtoken";
+import { authMiddleware } from "../middleware/authMiddleware";
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -40,7 +41,7 @@ router.get(
   }),
   (req: any, res: Response) => {
     const { token } = req.user;
-    res.redirect(`${process.env.CLIENT_URL}/home?token=${token}`);
+    res.redirect(`${process.env.CLIENT_URL}/authcallback?token=${token}`);
   }
 );
 
@@ -141,6 +142,20 @@ router.post(
     }
   }
 );
+
+router.post("/validate", authMiddleware, (req: Request, res: Response) => {
+  try {
+    res.status(200).json({
+      msg: "User is authenticated",
+      ok: true,
+    });
+  } catch (error) {
+    res.status(401).json({
+      msg: "User is not authenticated",
+      ok: false,
+    });
+  }
+});
 
 router.get("/hello", (req, res) => {
   res.status(200).json({

@@ -11,6 +11,9 @@ import DashBoard from './pages/DashBoard'
 import Advisor from './pages/(advisor)/Advisor'
 import { Toaster } from 'sonner'
 import TopBar from './components/topBar/TopBar'
+import Layout from './providers/Layout'
+import AuthCallback from './pages/(auth)/AuthCallback'
+import Profile from './pages/(profile)/Profile'
 
 function App() {
 
@@ -22,13 +25,13 @@ function App() {
         <Routes>
 
         // landing
-          <Route path='/' element={<Landing />} />
+          <Route path='/' element={<Landing />}/>
 
         // home
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Layout><Home/></Layout>} />
 
         // dashboard 
-          <Route path='/dashboard' element={<DashBoard/>}/> 
+          <Route path='/dashboard' element={<Layout><DashBoard/></Layout>}/> 
 
         // auth
           <Route path="/signin" element={<Signin />} />
@@ -39,8 +42,13 @@ function App() {
           <Route path="/onboard/3" element={<Onboard3 />} />
 
         //Advisor 
-          <Route path='/advisor' element={<Advisor/>}/>
+          <Route path='/advisor' element={<Layout><Advisor/></Layout>}/>
 
+        //Profile
+          <Route path='/profile' element={<Layout><Profile/></Layout>}/>
+
+        //Callback
+        <Route path='/authcallback' element={<AuthCallback/>}/>
 
         </Routes>
       </Router>
