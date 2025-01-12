@@ -1,3 +1,4 @@
+
 import CaloriesCard from '../components/cards/(essentials)/CaloriesCard'
 import StepsCard from '../components/cards/(essentials)/StepsCard'
 import O2LevelCard from '../components/cards/(essentials)/O2LevelCard'
@@ -21,7 +22,7 @@ function DashBoard() {
          <h1 className='text-[45px] row-start-1 col-span-3'>Dashboard</h1>
          
          <div className='bg-[--card-background] p-4 pt-1 rounded-xl row-start-2'>
-            <h1 className='text-[25px] w-full text-center p-3 flex gap-3 items-center justify-center'>Vital Stats<Activity size={20} /></h1>
+            <h1 className='text-[20px] w-full text-center p-3 flex gap-3 items-center justify-center'>Vital Stats<Activity size={20} /></h1>
             <div className='flex flex-wrap justify-center gap-x-6 gap-y-4  '>
                <WeightCard/>
                <HeightCard/>
@@ -32,13 +33,13 @@ function DashBoard() {
    
 
          <div className='row-start-2 col-span-2 bg-[--card-background] p-4' >
-            <h1 className='w-full text-[23px] text-center flex gap-3 items-center justify-center'>Analytics<ChartPie size={20} /></h1>
+            <h1 className='w-full text-[20px] text-center flex gap-3 items-center justify-center'>Analytics<ChartPie size={20} /></h1>
             
          </div>
 
 
          <div className='row-start-1 row-span-2 col-start-4 bg-[--card-background] p-4 rounded-xl'>
-            <h1 className='text-[25px] w-full text-center p-3 pt-1 flex gap-3 items-center justify-center '>Essentials<Star size={20}/></h1>
+            <h1 className='text-[20px] w-full text-center p-3 pt-1 flex gap-3 items-center justify-center '>Essentials<Star size={20}/></h1>
             <div className='flex flex-wrap justify-center items-center gap-4 gap-x-11' >
                <CaloriesCard/>
                <HydrationCard/>
@@ -48,7 +49,7 @@ function DashBoard() {
          </div>
 
          <div className='bg-[--card-background] col-span-2 rounded-xl w-full text-center flex flex-col items-center p-4 pt-1 pl-6 relative'>
-            <h1 className='text-[25px] p-3 flex gap-3 items-center justify-center'>AI Suggestion<Brain size={20} /></h1>
+            <h1 className='text-[20px] p-3 flex gap-3 items-center justify-center'>AI Suggestion<Brain size={20} /></h1>
             <img src="/icons/Morph.svg" 
              alt=""
              className='absolute scale-[0.06] top-[-250px] left-[-300px]'/>
@@ -56,11 +57,11 @@ function DashBoard() {
          </div>
 
          <div className='bg-[--card-background] rounded-xl'>
-         <h1 className='text-[25px] w-full text-center p-3 flex gap-3 items-center justify-center'>Sleep<MoonStar size={20} /></h1>
+         <h1 className='text-[20px] w-full text-center p-3 flex gap-3 items-center justify-center'>Sleep<MoonStar size={20} /></h1>
          </div>
 
          <div className='bg-[--card-background] rounded-xl p-1 pl-6 pb-6'>
-            <h1 className='text-[25px] w-full text-center p-1 flex gap-3 items-center justify-center'>Weather<CloudMoon size={20} /></h1>
+            <h1 className='text-[20px] w-full text-center p-1 flex gap-3 items-center justify-center'>Weather<CloudMoon size={20} /></h1>
             <div className='flex gap-3'>
             <SunnyCard/>
             <div className='flex flex-col gap-3'>

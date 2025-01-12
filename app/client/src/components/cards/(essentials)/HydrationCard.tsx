@@ -3,16 +3,16 @@ function HydrationCard() {
 
   return (
     <div className="relative h-40 w-40">
-      {/* Background Star Image */}
+    
       <img 
         src="/icons/Star.svg" 
         alt="Star background" 
         className="absolute inset-0 h-full w-full object-cover"
       />
       
-      {/* Content Container */}
+     
       <div className="relative z-10 h-full w-full flex flex-col items-center justify-center space-y-2 p-4">
-        {/* Water Label */}
+       
         <div className="flex items-center space-x-2">
           <img 
             src="/icons/Drop.svg" 
