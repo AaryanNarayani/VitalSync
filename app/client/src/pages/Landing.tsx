@@ -1,8 +1,9 @@
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Github, GithubIcon } from "lucide-react";
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Github, Mail } from "lucide-react";
 import WhyUs from "../components/cards/(landing)/WhyUs";
+import { Link } from "react-router-dom";
 
 function Landing() {
-  return (
+return (
     <>
       <div className="min-h-screen flex items-center relative">
         <div className="flex items-center gap-6 relative">
@@ -19,9 +20,11 @@ function Landing() {
               <button className="border border-black px-3 py-2 rounded flex items-center">
                 Learn More <ArrowDown/>
               </button>
-              <button className="bg-[#8CC2F2] text-black px-3 py-2 rounded flex items-center">
+              <Link to="/signup">
+              <button className="bg-[#8CC2F2] text-black px-3 py-2 rounded flex items-center hover:bg-[#8CC2F2]/90">
                 Get Started<ArrowUpRight />
               </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -92,14 +95,18 @@ function Landing() {
       {/* footer */}
       <div className="min-h-[50vh] flex flex-col justify-center items-center relative pt-20">
         <div className="flex flex-col gap-3 items-center">
-          <p>{`Built with love <3  by team CodeSnorters`}</p>
+          <p className="font-[--bricolage]">{`Built with love <3 by team CodeSnorters`}</p>
           <div className="flex gap-3">
-            <button className="border rounded py-1 px-2 bg-black/10">
-              Star on Github
-            </button>
-            <button className="border rounded py-1 px-2 bg-black/10">
-              Contact Us
-            </button>
+            <Link to='https://github.com/AaryanNarayani/VitalSync' target="_blank">
+              <button className="border flex rounded py-1 px-2 bg-black/10 hover:bg-black/20">
+                <span className="py-1 px-2"><Github size={16}/></span>Star on Github
+              </button>
+            </Link>
+            <Link to="mailto:aaryannarayani2004@gmail.com" target="_blank">
+              <button className="border flex rounded py-1 px-2 bg-black/10 hover:bg-black/20">
+              <span className="py-1 px-2"><Mail size={16}/></span>Contact Us
+              </button>
+            </Link>
           </div>
         </div>
         <div className="flex justify-between w-full absolute bottom-0 px-5 py-4">

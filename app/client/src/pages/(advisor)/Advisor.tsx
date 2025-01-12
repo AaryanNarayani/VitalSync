@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Send } from 'lucide-react';
-import { FloatingDock } from '../../components/ui/floating-dock';
+// import { FloatingDock } from '../../components/ui/floating-dock';
 function Advisor() {
 
   const [messages, setMessages] = useState([
@@ -45,10 +45,10 @@ function Advisor() {
       {started &&
         <>
 
-          <div className='w-full h-screen justify-center items-end flex  overflow-hidden'>
+          <div className='w-full justify-center items-end flex  overflow-hidden'>
 
             {/* background img */}
-            <div className='w-full  h-full  absolute top-0 flex justify-center items-end z-20  bg-opacity-20 ' >
+            <div className='w-full h-full absolute top-0 flex justify-center items-end bg-opacity-20 ' >
 
               <img src="/Advisor/Chatbg.svg" className='h-[520px] z-10 translate-y-[-10%]' />
 
@@ -58,7 +58,7 @@ function Advisor() {
             <div className="custom-scrollbar border border-gray-500 border-opacity-30  flex flex-col h-[550px]
              w-[1000px] bg-[#D4D4D4] backdrop-blur-md bg-white/40  rounded-xl mb-1 z-20">
               {/* Messages Container */}
-              <div className="flex-1 p-4 space-y-4 overflow-y-auto relative z-30 custom-scrollbar ">
+              <div className="flex-1 p-4 space-y-4 overflow-y-auto relative custom-scrollbar ">
                 
                 {messages.map((message) => (
                   <div

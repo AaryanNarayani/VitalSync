@@ -16,6 +16,7 @@ router.get('/',(req:Request,res:Response)=>{
 })
 
 router.get('/getInfo',authMiddleware,async(req:Request,res:Response)=>{
+try{
     const userId:any = req.user;
     console.log(`User Id : ${userId.email}`); 
     const prisma = getPrisma();
@@ -23,6 +24,10 @@ router.get('/getInfo',authMiddleware,async(req:Request,res:Response)=>{
     const user = await prisma.user.findFirst({
         where: {
             email: userId.email
+        },
+        include:{
+            details: true,
+            devices: true
         }
     });
 
@@ -33,16 +38,18 @@ router.get('/getInfo',authMiddleware,async(req:Request,res:Response)=>{
         return;
     }
 
-    const details = await prisma.details.findFirst({
-        where: {
-            userId: user.id
-        }
-    });
-    console.log(details);
-
     res.status(200).json({
-        details: details,
+        user: user,
+        details: user.details,
+        devices: user.devices,
     });
+}catch(error){
+    console.error("Error in getInfo:",error);
+    res.status(500).json({
+        error: "Error in getting user details",
+    });
+    return;
+}
 })
 
 router.post('/setInfo', authMiddleware, async (req: Request, res: Response) => {

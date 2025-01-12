@@ -121,11 +121,6 @@ h6 {
   height: 1px;
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  /* background: #388e3c; */
-   /* Darker green on hover */
-}
-
 /* Loader for dashboard */
 .progress-ring__circle {
   transition: stroke-dashoffset 0.35s;
