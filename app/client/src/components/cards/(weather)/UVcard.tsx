@@ -1,8 +1,6 @@
-import React from 'react'
-
 function UVcard() {
 
-    const UV = 100;
+    const UV = 6;
     const level = UV > 0 && UV <= 2 ? "Low": 
                   UV > 2 && UV <= 5? "Moderate" :
                   "High";
@@ -11,11 +9,11 @@ function UVcard() {
                   '#E54335';
 
   return (
-    <div className='w-[200px] h-[90px] bg-[#E54335] flex flex-col rounded-xl rounded-tl-none justify-center p-4'
+    <div className='w-[220px] h-[70px] bg-[#E54335] flex flex-col rounded-xl rounded-tl-none justify-center p-4'
     style={{backgroundColor : color}}>
-    <h1>UV Index</h1>
+    <h1 className='text-[15px]'>UV Index</h1>
     <div className='flex justify-between items-end'>
-        <p className='text-[28px]'>{UV}</p>
+        <p className='text-[25px]'>{UV}</p>
         <h1 className='text-[18px]'>{level}</h1>
     </div>
 </div>

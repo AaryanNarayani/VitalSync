@@ -1,5 +1,3 @@
-import React from 'react';
-
 function HydrationCard() {
   const hydrationLevel = 856;
 
@@ -15,19 +13,19 @@ function HydrationCard() {
       {/* Content Container */}
       <div className="relative z-10 h-full w-full flex flex-col items-center justify-center space-y-2 p-4">
         {/* Water Label */}
-        <div className="flex items-end space-x-2">
+        <div className="flex items-center space-x-2">
           <img 
             src="/icons/Drop.svg" 
             alt="Water drop" 
-            className="scale-[0.7]"
+            className="scale-[0.9]"
           />
-          <h1 className="text-[18px]">Water</h1>
+          <h1 className="text-[20px]">Water</h1>
         </div>
 
         {/* Hydration Amount */}
         <div className="flex flex-col items-center -space-y-1">
-          <p className="text-[22px]">{hydrationLevel}</p>
-          <h1 className="text-[12px]">ml</h1>
+          <p className="text-[25px]">{hydrationLevel}</p>
+          <h1 className="text-[15px]">ml</h1>
         </div>
 
         {/* Date Label */}

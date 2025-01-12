@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setDeviceData } from "../../redux/slice/OnboardSlice";
 
 const getName = (deviceNameSelected: string): string | undefined => {
   let availableDevices = ["AppleSeries2", "AppleSeries3","Fitbit","SamsungGalaxy","BoatRing","OuraRing","FitBitApp","AppleApp","SleepApp"];
@@ -13,6 +15,7 @@ const getName = (deviceNameSelected: string): string | undefined => {
 };
 
 const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected,setDeviceConnected }: any) => {
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
 
@@ -41,6 +44,7 @@ const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected,setDeviceCo
 
   const handleConnect = () => {
     setIsLoading(true);
+    dispatch(setDeviceData({type:"isApple", value: true}));
     setTimeout(() => {
       setIsLoading(false);
       setIsConnected(true);
