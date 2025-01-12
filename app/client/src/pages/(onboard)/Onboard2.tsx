@@ -17,22 +17,24 @@ const Onboard2 = () => {
   const [isAndroid, setIsAndroid] = useState<Boolean>(false)
   const [isRing, setIsRing] = useState<Boolean>(false);
   const [isApp, setIsApp] = useState<Boolean>(false);
-  
+
   const [devicehasSelected, setDeviceHasSelected] = useState(true);
-  const [deviceTypeSelected , setdeviceTypeSelected]=useState<Boolean>(false);
+  const [deviceTypeSelected, setdeviceTypeSelected] = useState<Boolean>(false);
   const [deviceNameSelected, setdeviceNameSelected] = useState<string>('');
+  const [deviceConnected, setDeviceConnected] = useState(false)
+
+  const handleModal2Close = () => {
+    setDeviceHasSelected(true)
+    setIsApple(false)
+    setIsApp(false)
+    setIsRing(false)
+    setIsAndroid(false)
+  }
 
 
-  const handleModal2Close=() => { 
-      setDeviceHasSelected(true)
-      setIsApple(false)
-      setIsApp(false)
-      setIsRing(false)
-      setIsAndroid(false)
-   }
-  const setDeviceType=(deviceType:string) => {
+  const setDeviceType = (deviceType: string) => {
     setdeviceNameSelected(deviceType)
-    setdeviceTypeSelected(true) 
+    setdeviceTypeSelected(true)
   }
 
   const handleSelection = (type: string) => {
@@ -53,6 +55,10 @@ const Onboard2 = () => {
 
   }
 
+  const handleDeviceTypeModalClose = () => {
+    setdeviceTypeSelected(false);
+    handleModal2Close();
+  }
 
   return (
     <div>
@@ -91,8 +97,8 @@ const Onboard2 = () => {
                   </button>
                 </div>
                 <div className="flex justify-end w-[95%] mt-4">
-                  <button className="py-2 w-[30%] rounded-xl px-2 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90">
-                    Skip
+                  <button className={`py-2 w-[30%] rounded-xl px-2 text-lg  to-[--primary] transition duration-300 ease-in-out hover:brightness-90 ${deviceConnected ? 'bg-black text-white' : "bg-gradient-to-r from-[--secondary]"}`}>
+                   {deviceConnected ? 'Submit': 'Skip' }
                   </button>
                 </div>
               </div>
@@ -161,16 +167,16 @@ const Onboard2 = () => {
 
       {/* Modals for each device */}
       {isApple && (
-       <div className="container-2 flex justify-center items-center absolute top-0 h-screen w-screen">
-        
-         <div className=" modal-2 bg-[--secondary-background] h-[330px] w-[450px] border border-gray border-opacity-55 rounded-md flex flex-col shadow-lg  ">
-        
-        
-          <div className="bg-white p-6 rounded-md"> 
-          <div className="w-[90%] mx-auto flex flex-col mt-[10px] ">
+        <div className="container-2 flex justify-center items-center absolute top-0 h-screen w-screen">
+
+          <div className=" modal-2 bg-[--secondary-background] h-[330px] w-[450px] border border-gray border-opacity-55 rounded-md flex flex-col shadow-lg  ">
+
+
+            <div className=" p-6 rounded-md">
+              <div className="w-[90%] mx-auto flex flex-col mt-[10px] ">
                 <div className="flex gap-2 justify-center items-center">
                   <Link to="/onboard/2">
-                    <div onClick={()=>handleModal2Close()} className="bg-[--secondary] h-[60px] w-[60px] rounded-[100%] rounded-br-none flex items-center justify-center hover:cursor-pointer hover:bg-purple-[--ternary]">
+                    <div onClick={() => handleModal2Close()} className="bg-[--secondary] h-[60px] w-[60px] rounded-[100%] rounded-br-none flex items-center justify-center hover:cursor-pointer hover:bg-purple-[--ternary]">
                       <ArrowLeft
                         size={30}
                         className="hover:rotate-[35deg] transition-all delay-100"
@@ -184,57 +190,283 @@ const Onboard2 = () => {
                 <div className="w-[100%] flex justify-center mt-1">
                   <p className="text-[--graytext] text-sm">Select your device from the below options</p>
                 </div>
-            
-            </div>
+
+              </div>
 
 
               <div className="flex flex-col gap-5 mt-8" >
                 <div className="w-[90%] mt-5 h-[50px] mx-auto  flex flex-col  items-center justify-center gap-5">
 
 
-                <button 
-                onClick={()=>setDeviceType("AppleSeries3")}
-                 className=" py-2 w-[280px] mx-auto rounded-xl px-2 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90
+                  <button
+                    onClick={() => setDeviceType("AppleSeries3")}
+                    className=" py-2 w-[280px] mx-auto rounded-xl px-2 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90
                 flex  justify-evenly items-center h-[50px] hover:scale-105
                 " >
-                  <div>
-                    <img src="/Onboarding/Devices/AppleSeries3.png" alt="" className="h-[40px] "/>
-                  </div>
-                  <div>
-                    <p className="text-md">Apple Watch Series 3 </p>
-                  </div>
-                  
-                  </button>       
-                <button 
-                onClick={()=>setDeviceType("AppleSeries2")}
-                className=" py-2 w-[280px] mx-auto rounded-xl px-2 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90
+                    <div>
+                      <img src="/Onboarding/Devices/AppleSeries3.png" alt="" className="h-[40px] " />
+                    </div>
+                    <div>
+                      <p className="text-md">Apple Watch Series 3 </p>
+                    </div>
+
+                  </button>
+                  <button
+                    onClick={() => setDeviceType("AppleSeries2")}
+                    className=" py-2 w-[280px] mx-auto rounded-xl px-2 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90
                 flex justify-evenly items-center  h-[50px]  hover:scale-105
                 " >
-                  <div>
-                    <img src="/Onboarding/Devices/AppleSeries2.png" alt="" className="h-[60px] translate-x-[-10%] translate-y-[-3%] "/>
-                  </div>
+                    <div>
+                      <img src="/Onboarding/Devices/AppleSeries2.png" alt="" className="h-[60px] translate-x-[-10%] translate-y-[-3%] " />
+                    </div>
 
-                  <div>
-                    <p className="text-md translate-x-[-8%]  ">Apple Watch Series 2 </p>
-                  </div>
-                  
-                  </button>  
+                    <div>
+                      <p className="text-md translate-x-[-8%]  ">Apple Watch Series 2 </p>
+                    </div>
+
+                  </button>
 
                 </div>
               </div>
+            </div>
+
+
+
           </div>
-
-
-
         </div>
-       </div>
+      )}
+      {isAndroid && (
+        <div className="container-2 flex justify-center items-center absolute top-0 h-screen w-screen">
+
+          <div className=" modal-2 bg-[--secondary-background] h-[330px] w-[450px] border border-gray border-opacity-55 rounded-md flex flex-col shadow-lg  ">
+
+
+            <div className=" p-6 rounded-md">
+              <div className="w-[90%] mx-auto flex flex-col mt-[10px] ">
+                <div className="flex gap-2 justify-center items-center">
+                  <Link to="/onboard/2">
+                    <div onClick={() => handleModal2Close()} className="bg-[--secondary] h-[60px] w-[60px] rounded-[100%] rounded-br-none flex items-center justify-center hover:cursor-pointer hover:bg-purple-[--ternary]">
+                      <ArrowLeft
+                        size={30}
+                        className="hover:rotate-[35deg] transition-all delay-100"
+                      />
+                    </div>
+                  </Link>
+                  <div>
+                    <h1 className="w-[300px] text-[32px] mx-auto tracking-normal">Choose your Device</h1>
+                  </div>
+                </div>
+                <div className="w-[100%] flex justify-center mt-1">
+                  <p className="text-[--graytext] text-sm">Select your device from the below options</p>
+                </div>
+
+              </div>
+
+
+              <div className="flex flex-col gap-5 mt-8" >
+                <div className="w-[90%] mt-5 h-[50px] mx-auto  flex flex-col  items-center justify-center gap-5">
+
+
+                  <button
+                    onClick={() => setDeviceType("SamsungGalaxy")}
+                    className=" py-2 w-[280px] mx-auto rounded-xl px-2 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90
+                flex  justify-evenly items-center h-[50px] hover:scale-105
+                " >
+                    <div>
+                      <img src="/Onboarding/Devices/SamsungGalaxy.png" alt="" className="h-[40px] " />
+                    </div>
+                    <div>
+                      <p className="text-md">Samsung Galaxy Watch</p>
+                    </div>
+
+                  </button>
+                  <button
+                    onClick={() => setDeviceType("Fitbit")}
+                    className=" py-3 w-[280px] mx-auto rounded-xl px-3 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90
+                flex justify-between items-center  h-[50px]  hover:scale-105
+                " >
+                    <div className="w-[30%] ">
+                      <img src="/Onboarding/Devices/AppleSeries2.png" alt="" className="h-[60px] translate-x-[-10%] translate-y-[-3%] " />
+                    </div>
+
+                    <div className="w-[60%]">
+                      <p className="text-md translate-x-[-8%]  ">Fitbit Versa 4  </p>
+                    </div>
+
+                  </button>
+
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      )}
+      {isRing && (
+        <div className="container-2 flex justify-center items-center absolute top-0 h-screen w-screen">
+
+          <div className=" modal-2 bg-[--secondary-background] h-[330px] w-[450px] border border-gray border-opacity-55 rounded-md flex flex-col shadow-lg  ">
+
+
+            <div className=" p-6 rounded-md">
+              <div className="w-[90%] mx-auto flex flex-col mt-[10px] ">
+                <div className="flex gap-2 justify-center items-center">
+                  <Link to="/onboard/2">
+                    <div onClick={() => handleModal2Close()} className="bg-[--secondary] h-[60px] w-[60px] rounded-[100%] rounded-br-none flex items-center justify-center hover:cursor-pointer hover:bg-purple-[--ternary]">
+                      <ArrowLeft
+                        size={30}
+                        className="hover:rotate-[35deg] transition-all delay-100"
+                      />
+                    </div>
+                  </Link>
+                  <div>
+                    <h1 className="w-[300px] text-[32px] mx-auto tracking-normal">Choose your Device</h1>
+                  </div>
+                </div>
+                <div className="w-[100%] flex justify-center mt-1">
+                  <p className="text-[--graytext] text-sm">Select your device from the below options</p>
+                </div>
+
+              </div>
+
+
+              <div className="flex flex-col gap-5 mt-8" >
+                <div className="w-[90%] mt-5 h-[50px] mx-auto  flex flex-col  items-center justify-center gap-5">
+
+
+                  <button
+                    onClick={() => setDeviceType("BoatRing")}
+                    className=" py-2 w-[280px] mx-auto rounded-xl px-2 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90
+                flex  justify-evenly items-center h-[50px] hover:scale-105
+                " >
+                    <div>
+                      <img src="/Onboarding/Devices/BoatRing.png" alt="" className="h-[40px] " />
+                    </div>
+                    <div>
+                      <p className="text-md">Boat Ring</p>
+                    </div>
+
+                  </button>
+                  <button
+                    onClick={() => setDeviceType("OuraRing")}
+                    className=" py-2 w-[280px] mx-auto rounded-xl px-2 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90
+                flex justify-evenly items-center  h-[50px]  hover:scale-105
+                " >
+                    <div>
+                      <img src="/Onboarding/Devices/OuraRing.png" alt="" className="h-[40px] translate-x-[-10%] translate-y-[-3%] " />
+                    </div>
+
+                    <div>
+                      <p className="text-md translate-x-[-8%]  ">Oura Ring 4 </p>
+                    </div>
+
+                  </button>
+
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      )}
+      {isApp && (
+        <div className="container-2 flex justify-center items-center absolute top-0 h-screen w-screen">
+
+          <div className=" modal-2 bg-[--secondary-background] h-[330px] w-[450px] border border-gray border-opacity-55 rounded-md flex flex-col shadow-lg  ">
+
+
+            <div className=" p-6 rounded-md">
+              <div className="w-[90%] mx-auto flex flex-col mt-[10px] ">
+                <div className="flex gap-2 justify-center items-center">
+                  <Link to="/onboard/2">
+                    <div onClick={() => handleModal2Close()} className="bg-[--secondary] h-[60px] w-[60px] rounded-[100%] rounded-br-none flex items-center justify-center hover:cursor-pointer hover:bg-purple-[--ternary]">
+                      <ArrowLeft
+                        size={30}
+                        className="hover:rotate-[35deg] transition-all delay-100"
+                      />
+                    </div>
+                  </Link>
+                  <div>
+                    <h1 className="w-[300px] text-[32px] mx-auto tracking-normal">Choose your Device</h1>
+                  </div>
+                </div>
+                <div className="w-[100%] flex justify-center mt-1">
+                  <p className="text-[--graytext] text-sm">Select your device from the below options</p>
+                </div>
+
+              </div>
+
+
+              <div className="flex flex-col gap-5 mt-8" >
+                <div className="w-[90%] mt-5 h-[50px] mx-auto  flex flex-col  items-center justify-center gap-5">
+
+                  <button
+                    onClick={() => setDeviceType("FitBitApp")}
+                    className=" py-2 w-[280px] mx-auto rounded-xl px-2 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90
+                flex justify-evenly items-center  h-[50px]  hover:scale-105
+                " >
+                    <div>
+                      <img src="/Onboarding/SmartApp.png" alt="" className="h-[60px] translate-x-[-10%] translate-y-[-3%] " />
+                    </div>
+
+                    <div>
+                      <p className="text-md translate-x-[-8%]  ">Fitbit App</p>
+                    </div>
+
+                  </button>
+                  <button
+                    onClick={() => setDeviceType("AppleApp")}
+                    className=" py-2 w-[280px] mx-auto rounded-xl px-2 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90
+                flex justify-evenly items-center  h-[50px]  hover:scale-105
+                " >
+                    <div>
+                      <img src="/Onboarding/Devices/AppleApp.png" alt="" className="h-[60px] translate-x-[-10%] translate-y-[-3%] " />
+                    </div>
+
+                    <div>
+                      <p className="text-md translate-x-[-8%]  ">Apple App</p>
+                    </div>
+
+                  </button>
+                  <button
+                    onClick={() => setDeviceType("SleepApp")}
+                    className=" py-2 w-[280px] mx-auto rounded-xl px-2 text-lg bg-gradient-to-r from-[--secondary] to-[--primary] text-black transition duration-300 ease-in-out hover:brightness-90
+                flex justify-evenly items-center  h-[50px]  hover:scale-105
+                " >
+                    <div>
+                      <img src="/Onboarding/Devices/SleepApp.png" alt="" className="h-[40px] translate-x-[-10%] translate-y-[-3%] " />
+                    </div>
+
+                    <div>
+                      <p className="text-md translate-x-[-8%]  ">Sleep App</p>
+                    </div>
+
+                  </button>
+
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
       )}
 
-      {
-        deviceTypeSelected && <DeviceTypeModal deviceNameSelected={deviceNameSelected} setdeviceTypeSelected={setdeviceTypeSelected}/>
+      {deviceTypeSelected &&
+        <DeviceTypeModal
+          deviceNameSelected={deviceNameSelected}
+          setdeviceTypeSelected={handleDeviceTypeModalClose} 
+          setDeviceConnected={setDeviceConnected}
+          // Updated this line
+        />
       }
 
- 
+
     </div>
   );
 };

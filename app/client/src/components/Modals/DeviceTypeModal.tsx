@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const getName = (deviceNameSelected: string): string | undefined => {
-  let availableDevices = ["AppleSeries2", "AppleSeries3"];
+  let availableDevices = ["AppleSeries2", "AppleSeries3","Fitbit","SamsungGalaxy","BoatRing","OuraRing","FitBitApp","AppleApp","SleepApp"];
   for (let item of availableDevices) {
     if (item === deviceNameSelected) {
       return item;
@@ -12,25 +12,47 @@ const getName = (deviceNameSelected: string): string | undefined => {
   return undefined;
 };
 
-const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected }: any) => {
+const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected,setDeviceConnected }: any) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
 
   let deviceName = getName(deviceNameSelected);
+
   let imageTitle;
   if (deviceName === "AppleSeries3") {
     imageTitle = "Apple Watch Series 3";
   } else if (deviceName === "AppleSeries2") {
     imageTitle = "Apple Watch Series 2";
+  } else if (deviceName === "Fitbit") {
+    imageTitle = "Fitbit Versa 4";
+  } else if (deviceName === "SamsungGalaxy") {
+    imageTitle = "Samsung Galaxy Watch";
+  } else if (deviceName === "BoatRing") {
+    imageTitle = "Boat Ring";
+  } else if (deviceName === "OuraRing") {
+    imageTitle = "Oura Ring 4";
+  } else if(deviceName==="FitBitApp"){
+    imageTitle = "FitBit App";
+  } else if(deviceName==="SleepApp"){
+    imageTitle = "Sleep App";
+  } else if(deviceName==="AppleApp"){
+    imageTitle = "Apple App";
   }
-  // Add more device cases as needed.
 
   const handleConnect = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
       setIsConnected(true);
-    }, 2000); // Simulates a 2-second connection process.
+      setDeviceConnected(true)
+    }, 2000);
+  };
+
+  const handleNext = () => {
+    // Reset all states to their initial values
+    setIsLoading(false);
+    setIsConnected(false);
+    setdeviceTypeSelected(false);
   };
 
   return (
@@ -41,7 +63,7 @@ const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected }: any) => 
             <div className="flex gap-2 justify-center items-center">
               <Link to="/onboard/2">
                 <div
-                  onClick={() => setdeviceTypeSelected()}
+                  onClick={() => setdeviceTypeSelected(false)}
                   className="bg-[--secondary] h-[60px] w-[60px] rounded-[100%] rounded-br-none flex items-center justify-center hover:cursor-pointer hover:bg-purple-[--ternary]"
                 >
                   <ArrowLeft
@@ -64,16 +86,14 @@ const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected }: any) => 
           </div>
 
           <div className="flex flex-col gap-3 mt-8">
-            <div className=" bg-geen-400 w-[90%] mt-5 h-[130px] mx-auto flex flex-col items-center justify-center gap-4">
-
+            <div className="bg-geen-400 w-[90%] mt-5 h-[130px] mx-auto flex flex-col items-center justify-center gap-4">
               <div>
-
-              <img
-                src={`/Onboarding/Devices/${deviceName}.png`}
-                alt=""
-                className="h-[160px]   mt-[30px]  object-cover"
+                <img
+                  src={`/Onboarding/Devices/${deviceName}.png`}
+                  alt=""
+                  className="h-[160px] mt-[30px] object-cover"
                 />
-                </div>
+              </div>
               <h1 className="text-lg translate-y-[-40%]">{imageTitle}</h1>
 
               <button
@@ -119,15 +139,17 @@ const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected }: any) => 
         </div>
 
         {/* Bottom-Right "Next" Button */}
-        {
-          isConnected &&  <div className="absolute bottom-4 right-4 transition-all delay-100">
-          <button className="bg-black text-white py-2 px-4 rounded-md flex items-center gap-2 transition-all delay-100">
-            Next
-            <ArrowRight size={20} />
-          </button>
-        </div>
-        }
-
+        {isConnected && (
+          <div className="absolute bottom-4 right-4 transition-all delay-100">
+            <button 
+              onClick={handleNext}
+              className="bg-black text-white py-2 px-4 rounded-md flex items-center gap-2 transition-all delay-100"
+            >
+              Next
+              <ArrowRight size={20} />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
