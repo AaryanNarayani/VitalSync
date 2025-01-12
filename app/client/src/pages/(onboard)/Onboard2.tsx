@@ -34,13 +34,7 @@ const Onboard2 = () => {
   const onboardState = useSelector((state: any) => state.onboardState);
   const [token, setToken] = useState('');
 
-  const handleModal2Close = () => {
-    setDeviceHasSelected(true);
-    setIsApple(false);
-    setIsApp(false);
-    setIsRing(false);
-    setIsAndroid(false);
-  };
+ 
 
   const setDeviceType = (deviceType: string) => {
     setdeviceNameSelected(deviceType);
@@ -464,7 +458,7 @@ const Onboard2 = () => {
                     </div>
 
                   </button>
-
+                  <button>
                     <div>
                       <p className="text-md translate-x-[-8%]  ">
                         Apple Watch Series 2{" "}

@@ -17,6 +17,9 @@
   --high: #f56565;
   --light-text: #8D8D8D;
   --card-background : #F2F2F2;
+  --user-chat :#8CC2F2;
+  --bot-chat :#F2FCFF;
+  --send-icon-chat :#4299E1;
 
   --bricolage: Bricolage Grotesque;
   --inter: Inter;
@@ -100,4 +103,32 @@ h6 {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* scroll bar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background:#f2fcff; 
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background:  #ddd1ff; 
+  border-radius: 4px;
+  height: 1px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  /* background: #388e3c; */
+   /* Darker green on hover */
+}
+
+/* Loader for dashboard */
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
 }
