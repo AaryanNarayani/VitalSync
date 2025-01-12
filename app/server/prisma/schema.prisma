@@ -7,8 +7,107 @@ model User{
   name        String?
   email       String    @unique
   avatar      String    @default("")
-  createdAt   DateTime  @default(now())
+  details     Details?
+  goals       Goal[]
+  alerts      Alert[]
+  history     History[]
+  devices     Device[]
+  
+  createdAt   DateTime?  @default(now())
+  updatedAt   DateTime?  @updatedAt
 }
+
+model Device{
+  id          Int       @id @default(autoincrement())
+  userId      Int       @unique
+  isFitbit    Boolean   @default(false)
+  isApple     Boolean   @default(false)
+  isBoat      Boolean   @default(false)
+  isSleepApp  Boolean   @default(false)
+  isFitbitApp Boolean   @default(false)
+  isAppleApp  Boolean   @default(false)
+  isBoatRing  Boolean   @default(false)
+  isOuraRing  Boolean   @default(false)
+  
+  user        User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Details{
+  id          Int       @id @default(autoincrement())
+  userId      Int       @unique
+  
+  weight      Int       @default(70)
+  height      Int       @default(170)
+  age         Int       @default(25)
+  BMI         Int       @default(25)
+
+  BP          String    @default("120/80")
+  HeartRate   Int       @default(70)
+  calorie     Int       @default(2000)
+  hydration   Int       @default(850)
+  spo2        Int       @default(95)
+  sleepCycle  Int       @default(8)
+  steps       Int       @default(10000)
+
+  weather     Int       @default(25)
+  AQI         Int       @default(90)
+  UvIndex     Int       @default(4)
+
+  user        User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Goal{
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  goal        String
+  isCompleted Boolean   @default(false)
+  
+  user        User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Alert{
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  alert       String
+  isRead      Boolean   @default(false)
+  
+  user        User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model History{
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  date        DateTime
+  weight      Int
+  height      Int
+  age         Int
+  BMI         Int
+
+  BP          String
+  HeartRate   Int
+  calorie     Int
+  hydration   Int
+  spo2        Int
+  sleepCycle  Int
+  steps       Int
+
+  weather     Int
+  AQI         Int
+  UvIndex     Int
+
+  user        User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")

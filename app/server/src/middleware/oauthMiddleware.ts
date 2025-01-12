@@ -48,6 +48,11 @@ passport.use(
                            avatar: googleAvatar,
                        }
                    });
+                   await prisma.details.create({
+                        data: {
+                            userId: user.id
+                        }
+                    });
                } else {
                    // Update existing user with latest Google info
                    user = await prisma.user.update({
@@ -66,6 +71,7 @@ passport.use(
 
                callback(null, { ...user, token });
            } catch (error) {
+               callback(`Couldnt Authenticate user as Email is not provided by Google`);
                console.error("Error in Google Strategy:", error);
                callback(error);
            }

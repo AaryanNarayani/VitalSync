@@ -5,6 +5,7 @@ import session from 'express-session';
 import cors from 'cors';
 import passport from 'passport';
 import './middleware/oauthMiddleware';
+import { userRouter } from './routes/userRouter';
 const app = express();
 const JWT_SECRET = process.env.JWT_SECRET;
 const port = 3000;
@@ -21,6 +22,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api/v1/auth',authRouter);
+app.use('/api/v1/user',userRouter);
 
 app.get('/api/v1/hello',(req:Request,res:Response) =>{
     res.status(200).json({
