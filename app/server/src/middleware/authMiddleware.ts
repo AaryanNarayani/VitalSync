@@ -7,6 +7,7 @@ export const authMiddleware = (
     next: () => void
   ): void => {
     const authHeader = req.headers.authorization;
+    console.log("authHeader:", authHeader);
     
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       res.status(401).json({ error: "Invalid authorization header. Use 'Bearer <token>'" });
@@ -20,9 +21,11 @@ export const authMiddleware = (
         token,
         process.env.JWT_SECRET as string
       ) as String;
+      console.log("decoded:", decoded);
       req.user = decoded;
       next();
     } catch (error) {
+        console.error("Error in authMiddleware:", error);
         res.status(401).json({ error: "Invalid token" });
         return;
     }
