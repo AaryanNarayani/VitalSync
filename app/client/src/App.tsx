@@ -6,15 +6,17 @@ import Landing from './pages/Landing'
 import Verify from './pages/(auth)/Verify'
 import Onboard1 from './pages/(onboard)/Onboard1'
 import Onboard2 from './pages/(onboard)/Onboard2'
-import Onboard3 from './pages/(onboard)/Onboard3'
+import Onboard3 from './pages/(onboard)/Onboard3' 
 import DashBoard from './pages/DashBoard'
 import Advisor from './pages/(advisor)/Advisor'
+import { Toaster } from 'sonner'
 
 function App() {
 
   return (
     <>
       <Router>
+        <Toaster richColors  />
         <Routes>
 
         // landing
