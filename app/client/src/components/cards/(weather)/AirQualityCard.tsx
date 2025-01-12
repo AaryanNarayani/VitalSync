@@ -9,11 +9,11 @@ function AirQualityCard() {
                   '#E54335';
 
   return (
-    <div className={`w-[220px] h-[70px]  flex flex-col rounded-xl rounded-bl-none justify-center p-4`}
+    <div className={`w-[200px] h-[50px]  flex flex-col rounded-xl rounded-bl-none justify-center p-4`}
          style={{backgroundColor : color}}>
-            <h1 className='text-[15px]'>Air Quality</h1>
+            <h1 className='text-[13px]'>Air Quality</h1>
             <div className='flex justify-between items-end'>
-                <p className='text-[25px]'>{AQI}</p>
+                <p className='text-[22px]'>{AQI}</p>
                 <h1 className='text-[18px]'>{level}</h1>
             </div>
     </div>
