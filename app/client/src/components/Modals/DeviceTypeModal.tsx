@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { setDeviceData } from "../../redux/slice/OnboardSlice";
 
 const getName = (deviceNameSelected: string): string | undefined => {
-  let availableDevices = ["AppleSeries2", "AppleSeries3","Fitbit","SamsungGalaxy","BoatRing","OuraRing","FitBitApp","AppleApp","SleepApp"];
+  let availableDevices = ["AppleSeries2", "AppleSeries3", "Fitbit", "SamsungGalaxy", "BoatRing", "OuraRing", "FitBitApp", "AppleApp", "SleepApp"];
   for (let item of availableDevices) {
     if (item === deviceNameSelected) {
       return item;
@@ -14,7 +14,7 @@ const getName = (deviceNameSelected: string): string | undefined => {
   return undefined;
 };
 
-const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected,setDeviceConnected }: any) => {
+const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected, setDeviceConnected }: any) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
@@ -24,27 +24,30 @@ const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected,setDeviceCo
   let imageTitle;
   if (deviceName === "AppleSeries3") {
     imageTitle = "Apple Watch Series 3";
+    dispatch(setDeviceData({ type: "isApple", value: true }));
   } else if (deviceName === "AppleSeries2") {
     imageTitle = "Apple Watch Series 2";
+    dispatch(setDeviceData({ type: "isApple", value: true }));
   } else if (deviceName === "Fitbit") {
     imageTitle = "Fitbit Versa 4";
+    dispatch(setDeviceData({type:"isApple", value: true}));
   } else if (deviceName === "SamsungGalaxy") {
     imageTitle = "Samsung Galaxy Watch";
   } else if (deviceName === "BoatRing") {
     imageTitle = "Boat Ring";
   } else if (deviceName === "OuraRing") {
     imageTitle = "Oura Ring 4";
-  } else if(deviceName==="FitBitApp"){
+  } else if (deviceName === "FitBitApp") {
     imageTitle = "FitBit App";
-  } else if(deviceName==="SleepApp"){
+  } else if (deviceName === "SleepApp") {
     imageTitle = "Sleep App";
-  } else if(deviceName==="AppleApp"){
+  } else if (deviceName === "AppleApp") {
     imageTitle = "Apple App";
   }
 
   const handleConnect = () => {
     setIsLoading(true);
-    dispatch(setDeviceData({type:"isApple", value: true}));
+
     setTimeout(() => {
       setIsLoading(false);
       setIsConnected(true);
@@ -103,11 +106,10 @@ const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected,setDeviceCo
               <button
                 onClick={handleConnect}
                 disabled={isLoading || isConnected}
-                className={`translate-y-[-20px] py-2 w-[140px] mx-auto rounded-xl px-2 text-lg ${
-                  isConnected
+                className={`translate-y-[-20px] py-2 w-[140px] mx-auto rounded-xl px-2 text-lg ${isConnected
                     ? "bg-green-500 text-white"
                     : "bg-gradient-to-r from-[--secondary] to-[--primary] text-black"
-                } transition duration-300 ease-in-out hover:brightness-90`}
+                  } transition duration-300 ease-in-out hover:brightness-90`}
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center">
@@ -145,7 +147,7 @@ const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected,setDeviceCo
         {/* Bottom-Right "Next" Button */}
         {isConnected && (
           <div className="absolute bottom-4 right-4 transition-all delay-100">
-            <button 
+            <button
               onClick={handleNext}
               className="bg-black text-white py-2 px-4 rounded-md flex items-center gap-2 transition-all delay-100"
             >
