@@ -10,12 +10,14 @@ import Onboard3 from './pages/(onboard)/Onboard3'
 import DashBoard from './pages/DashBoard'
 import Advisor from './pages/(advisor)/Advisor'
 import { Toaster } from 'sonner'
+import TopBar from './components/topBar/TopBar'
 
 function App() {
 
   return (
     <>
       <Router>
+        <TopBar/>
         <Toaster richColors  />
         <Routes>
 
