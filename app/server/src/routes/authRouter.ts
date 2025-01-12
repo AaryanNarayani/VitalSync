@@ -120,13 +120,17 @@ router.post(
 
       console.log(user.id);
       console.log(user);
-      await prisma.details.create({
-        data: {
+      await prisma.details.upsert({
+        where: {
+          userId: user.id,
+        },
+        update: {},
+        create: {
           userId: user.id,
         },
       })
 
-      const token = jwt.sign({ email }, process.env.JWT_SECRET as string, {
+      const token = jwt.sign({ email }, JWT_SECRET as string, {
         expiresIn: "24h",
       });
       verificationCodes.delete(email);
