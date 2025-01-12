@@ -31,15 +31,8 @@ const Onboard2 = () => {
       setIsAndroid(false)
    }
   const setDeviceType=(deviceType:string) => {
-    // if (watchtype == "Series3") {  
-    //   setappleSeries3selected(true);
-    // }
-    // else if (watchtype == "Series2") {
-    //   setappleSeries2selected(true);
-    // }
     setdeviceNameSelected(deviceType)
-    setdeviceTypeSelected(true)
-  
+    setdeviceTypeSelected(true) 
   }
 
   const handleSelection = (type: string) => {
@@ -71,7 +64,7 @@ const Onboard2 = () => {
             <>
               <div className="w-[90%] mx-auto flex flex-col mt-[40px]">
                 <div className="flex gap-2 justify-center items-center">
-                  <Link to="/onboard/2">
+                  <Link to="/onboard/1">
                     <div className="bg-[--secondary] h-[60px] w-[60px] rounded-[100%] rounded-br-none flex items-center justify-center hover:cursor-pointer hover:bg-purple-[--ternary]">
                       <ArrowLeft
                         size={30}
