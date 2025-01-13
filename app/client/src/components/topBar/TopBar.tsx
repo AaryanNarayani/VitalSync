@@ -6,17 +6,15 @@ function TopBar() {
   const naviagte = useNavigate();
   const location = useLocation();
   const [isLanding, setIsLanding] = useState<Boolean>(false)
-  console.log(location.pathname);
-
- 
-
 
   useEffect(() => {
     setToken(localStorage.getItem("token") || "");
     if (location.pathname === '/signup' || location.pathname === '/signin') {
       setIsLanding(true)
     }
-  }, []);
+    else
+      setIsLanding(false)
+  }, [location.pathname]);
 
   const handleLogin = () => {
     console.log('I was clicked');
