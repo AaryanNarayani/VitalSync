@@ -45,8 +45,8 @@ function Profile() {
         <div className="h-[calc(100vh-48px)] w-[full]">
             <div className="h-[40vh] w-full p-6 mt-10 pl-10 flex gap-16">
                 <div className="h-full flex items-center relative">
-                    <img src="https://lh3.googleusercontent.com/a/ACg8ocLBdAgPSptNIM-jm_sZgiqGAwSacQopOBEaYx-_U1VSogCKvOo=s96-c"
-                         alt="hahah"
+                    <img src={userState?.user?.avatar}
+                         alt="profile"
                          className="h-[220px] w-[220px] rounded-full border-[5px] border-[--primary]"
                           />
                         <div className="p-4 bg-[--primary] rounded-full absolute border-[5px] border-white top-40 left-40">

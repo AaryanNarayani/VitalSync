@@ -14,7 +14,7 @@ import { toast } from "sonner";
 
 const Onboard2 = () => {
   const [toggelDrawer, setToggelDrawer] = useState(false);
-  const [selectedModal, setSelectedModal] = useState<string | null>(null);
+  // const [selectedModal, setSelectedModal] = useState<string | null>(null);
   const [isApple, setIsApple] = useState<Boolean>(false);
   const [isAndroid, setIsAndroid] = useState<Boolean>(false);
   const [isRing, setIsRing] = useState<Boolean>(false);
