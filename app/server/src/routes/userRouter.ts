@@ -40,8 +40,6 @@ try{
 
     res.status(200).json({
         user: user,
-        details: user.details,
-        devices: user.devices,
     });
 }catch(error){
     console.error("Error in getInfo:",error);
