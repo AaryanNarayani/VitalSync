@@ -75,11 +75,12 @@ console.log('this is from redux',userState);
           </div>
         </div>
 
-        <div className="row-start-2 col-span-2 bg-[--card-background] p-4">
-          <h1 className="w-full text-[20px] text-center flex gap-3 items-center justify-center">
+        <div className="row-start-2 col-span-2 bg-[--card-background] rounded-lg justify-between flex flex-col p-7">
+          <h1 className="w-full text-[25px] text-center flex flex-col gap-3 items-center justify-center">
             Analytics
-            <ChartPie size={20} />
+            {/* <ChartPie size={20} /> */}
           </h1>
+            <img src="/dashbaord/analytics.svg" alt="" className='h-[200px]'/>
         </div>
 
         <div className="row-start-1 row-span-2 col-start-4 bg-[--card-background] p-4 rounded-xl flex flex-col gap-3">
