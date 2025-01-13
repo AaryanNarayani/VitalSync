@@ -22,7 +22,7 @@ VitalSync is a *Real-Time Personalized Health Advisory System* designed to trans
 Here’s a video walkthrough of VitalSync’s key features and functionalities:
 
 <video controls>
-  <source src="packages/demonstration.mp4" type="video/mp4">
+  <source src="./packages/demonstration.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
