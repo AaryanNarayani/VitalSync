@@ -7,6 +7,7 @@ model User{
   name        String?
   email       String    @unique
   avatar      String    @default("")
+  gender      String    @default("male")
   details     Details?
   goals       Goal[]
   alerts      Alert[]
