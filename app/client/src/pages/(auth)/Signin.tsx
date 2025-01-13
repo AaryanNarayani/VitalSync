@@ -52,12 +52,12 @@ function Signin() {
 
   return (
     <div className="h-[100vh] w-[100vw] flex items-center justify-center">
-      <div className="h-[60vh] w-[30vw] bg-[--secondary-background] border flex flex-col items-center p-12 rounded-lg">
+      <div className="h-[60vh] w-[30vw] bg-[--secondary-background] border flex flex-col items-center p-12 rounded-lg tran">
         <h1 className="text-[40px]">{isSignedUp? "Sign In" : "Sign Up"}</h1>
         <p className="text-[12px] text-[--light-text]">{isSignedUp ? "Welcome !" : "Wellness starts with tracking !"}</p>
         <button className="h-[40px] w-[80%] bg-gradient-to-r from-[--secondary] to-[--primary] border flex items-center justify-center gap-3 rounded-lg mt-6 mb-5 p-5" onClick={handleOauth}>
           <img src="googleIcon.png" alt="" className="h-[22px] w-[22px]" />
-          Sign Up with Google
+          Continue with Google
         </button>
         <div className="relative w-[85%] h-[15px] mt-3" >
           <hr className="z-0"/>
