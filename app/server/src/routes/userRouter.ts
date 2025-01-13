@@ -64,7 +64,7 @@ router.post('/setInfo', authMiddleware, async (req: Request, res: Response) => {
             return;
         }
 
-        const { name, height, weight, age } = req.body;
+        const { name, height, weight, age , gender } = req.body;
 
         const dbUser = await prisma.user.findUnique({
             where: { email: user.email },
@@ -82,6 +82,11 @@ router.post('/setInfo', authMiddleware, async (req: Request, res: Response) => {
         let BMI = dbUser.details?.BMI || 25;
         if (height && weight) {
             BMI = weight / (height * height) * 10000;
+            if (gender === 'male') {
+            BMI *= 1.1; 
+            } else if (gender === 'female') {
+            BMI *= 0.9; 
+            }
         }
 
         const userDevice = dbUser.devices[0];
@@ -99,7 +104,7 @@ router.post('/setInfo', authMiddleware, async (req: Request, res: Response) => {
         await prisma.$transaction(async (tx) => {
             await tx.user.update({
                 where: { email: user.email },
-                data: { name }
+                data: { name , gender }
             });
             
             await tx.details.upsert({
