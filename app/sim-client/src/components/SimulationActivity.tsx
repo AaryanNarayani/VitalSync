@@ -23,7 +23,7 @@ export default function SimulationActivity({ name, effects, devices, onStart }: 
 
   return (
     <motion.div
-      className="bg-card-background rounded-lg shadow-lg p-6 cursor-pointer"
+      className="bg-card-background rounded-lg shadow-lg p-6 cursor-pointer bg-white"
       whileHover={{ scale: 1.05 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -52,7 +52,7 @@ export default function SimulationActivity({ name, effects, devices, onStart }: 
           </span>
         ))}
       </div>
-      <Button onClick={onStart} className="w-full bg-primary hover:bg-primary-dark text-white">
+      <Button onClick={onStart} className="w-full bg-gradient-to-r from-[--primary] to-[--secondary] hover:bg-primary-dark text-black">
         Start Simulation
       </Button>
     </motion.div>
