@@ -102,7 +102,7 @@ router.post('/setInfo', authMiddleware, async (req: Request, res: Response) => {
         await prisma.$transaction(async (tx) => {
             await tx.user.update({
                 where: { email: user.email },
-                data: { name , gender }
+                data: { name , gender , isOnboarded: true }
             });
             
             await tx.details.upsert({
