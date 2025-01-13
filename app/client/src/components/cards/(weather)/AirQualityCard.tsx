@@ -1,6 +1,6 @@
-function AirQualityCard() {
+function AirQualityCard({data} : any) {
 
-    const AQI = 1;
+    const AQI = data;
     const level = AQI > 0 && AQI <= 50 ? "Good": 
                   AQI > 50 && AQI <= 100? "Moderate" :
                   "Unhealty";
@@ -9,7 +9,7 @@ function AirQualityCard() {
                   '#E54335';
 
   return (
-    <div className={`w-[200px] h-[50px]  flex flex-col rounded-xl rounded-bl-none justify-center p-4`}
+    <div className={`w-[200px] h-[65px]  flex flex-col rounded-xl rounded-bl-none justify-center p-4`}
          style={{backgroundColor : color}}>
             <h1 className='text-[13px]'>Air Quality</h1>
             <div className='flex justify-between items-end'>

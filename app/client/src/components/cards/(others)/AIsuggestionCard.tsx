@@ -8,9 +8,9 @@ function AIsuggestionCard() {
             <div className="absolute h-[100px] w-[100px] bg-white rounded-full left-[-35px] top-[-35px] -z-1"/>
             
            
-            <div className='relative space-y-2 w-full flex flex-col items-start p-4 pt-2'>
-                <h1 className="text-[18px]">{header}</h1>
-                <p className="text-[14px] text-left pl-4">{desc}</p>
+            <div className='relative space-y-2 w-full flex flex-col items-start py-7 px-10'>
+                <h1 className="text-[20px]">{header}</h1>
+                <p className="text-[14px] text-left ">{desc}</p>
             </div>
         </div>
     )

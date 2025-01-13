@@ -1,6 +1,6 @@
-function UVcard() {
+function UVcard({data} : any) {
 
-    const UV = 6;
+    const UV = data;
     const level = UV > 0 && UV <= 2 ? "Low": 
                   UV > 2 && UV <= 5? "Moderate" :
                   "High";
@@ -9,7 +9,7 @@ function UVcard() {
                   '#E54335';
 
   return (
-    <div className='w-[200px] h-[50px] flex flex-col rounded-xl rounded-tl-none justify-center p-4'
+    <div className='w-[200px] h-[65px] flex flex-col rounded-xl rounded-tl-none justify-center p-4'
     style={{backgroundColor : color}}>
     <h1 className='text-[13px]'>UV Index</h1>
     <div className='flex justify-between items-end'>
