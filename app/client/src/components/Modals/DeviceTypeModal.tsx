@@ -14,7 +14,7 @@ const getName = (deviceNameSelected: string): string | undefined => {
   return undefined;
 };
 
-const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected, setDeviceConnected }: any) => {
+const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected, setDeviceConnected ,setallDevicesPaired}: any) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
@@ -25,29 +25,46 @@ const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected, setDeviceC
   if (deviceName === "AppleSeries3") {
     imageTitle = "Apple Watch Series 3";
     dispatch(setDeviceData({ type: "isApple", value: true }));
-  } else if (deviceName === "AppleSeries2") {
+  }
+  else if (deviceName === "AppleSeries2") {
     imageTitle = "Apple Watch Series 2";
     dispatch(setDeviceData({ type: "isApple", value: true }));
-  } else if (deviceName === "Fitbit") {
-    imageTitle = "Fitbit Versa 4";
-    dispatch(setDeviceData({type:"isApple", value: true}));
-  } else if (deviceName === "SamsungGalaxy") {
-    imageTitle = "Samsung Galaxy Watch";
-  } else if (deviceName === "BoatRing") {
-    imageTitle = "Boat Ring";
-  } else if (deviceName === "OuraRing") {
-    imageTitle = "Oura Ring 4";
-  } else if (deviceName === "FitBitApp") {
-    imageTitle = "FitBit App";
-  } else if (deviceName === "SleepApp") {
-    imageTitle = "Sleep App";
-  } else if (deviceName === "AppleApp") {
-    imageTitle = "Apple App";
   }
+  else if (deviceName === "Fitbit") {
+    imageTitle = "Fitbit Versa 4";
+    dispatch(setDeviceData({ type: "isFitbit", value: true }));
+  }
+
+  else if (deviceName === "SamsungGalaxy") {
+    imageTitle = "Samsung Galaxy Watch";
+    dispatch(setDeviceData({ type: "isFitbit", value: true }));
+  }
+  else if (deviceName === "BoatRing") {
+    imageTitle = "Boat Ring";
+    dispatch(setDeviceData({ type: "isBoatRing", value: true }));
+  }
+  else if (deviceName === "OuraRing") {
+    imageTitle = "Oura Ring 4";
+    dispatch(setDeviceData({ type: "isOuraRing", value: true }));
+  }
+  else if (deviceName === "FitBitApp") {
+    imageTitle = "FitBit App";
+    dispatch(setDeviceData({ type: "isFitbitApp", value: true }));
+  }
+  else if (deviceName === "SleepApp") {
+    imageTitle = "Sleep App";
+    dispatch(setDeviceData({ type: "isSleepApp", value: true }));
+  }
+  else if (deviceName === "AppleApp") {
+    imageTitle = "Apple App";
+    dispatch(setDeviceData({ type: "isAppleApp", value: true }));
+  }
+
+
 
   const handleConnect = () => {
     setIsLoading(true);
-
+    setallDevicesPaired((prev: any) => [...prev, deviceName]);
     setTimeout(() => {
       setIsLoading(false);
       setIsConnected(true);
@@ -107,8 +124,8 @@ const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected, setDeviceC
                 onClick={handleConnect}
                 disabled={isLoading || isConnected}
                 className={`translate-y-[-20px] py-2 w-[140px] mx-auto rounded-xl px-2 text-lg ${isConnected
-                    ? "bg-green-500 text-white"
-                    : "bg-gradient-to-r from-[--secondary] to-[--primary] text-black"
+                  ? "bg-green-500 text-white"
+                  : "bg-gradient-to-r from-[--secondary] to-[--primary] text-black"
                   } transition duration-300 ease-in-out hover:brightness-90`}
               >
                 {isLoading ? (

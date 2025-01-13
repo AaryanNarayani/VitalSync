@@ -66,6 +66,7 @@ function Profile() {
     handleGetUserData();
   }, [token]);
 
+
   // Ref for the scrollable div
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -114,6 +115,7 @@ function Profile() {
             <div className="flex flex-col items-center">
               <h1 className="text-[25px]">Weight</h1>
               <p className="text-[20px]">{userState?.user?.details.weight}kg</p>
+
             </div>
             <div className="flex flex-col items-center">
               <h1 className="text-[25px]">Height</h1>

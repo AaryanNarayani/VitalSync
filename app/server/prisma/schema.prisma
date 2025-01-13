@@ -8,6 +8,7 @@ model User{
   email       String    @unique
   avatar      String    @default("")
   gender      String    @default("male")
+  isOnboarded Boolean   @default(false)
   details     Details?
   goals       Goal[]
   alerts      Alert[]

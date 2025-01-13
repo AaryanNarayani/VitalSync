@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../utils";
-import axios from 'axios';
+// import { BASE_URL } from "../utils";
+// import axios from 'axios';
 import { toast } from "sonner";
 
 function Signin() {
@@ -23,8 +23,8 @@ function Signin() {
     else{
       try{
       setIsLoading(true);
-      const response = await axios.post(`${BASE_URL}/api/v1/auth/signup/email`,{email});
-      toast.success(response.data.message);
+      // const response = await axios.post(`${BASE_URL}/api/v1/auth/signup/email`,{email});
+      toast.success(`Success!`);
       navigate(`/verify/?email=${email}`);
     }
     catch(e : any){
@@ -46,7 +46,7 @@ function Signin() {
   },[location.pathname])
 
   const handleOauth = () => {
-      window.location.href = `${BASE_URL}/api/v1/auth/google`;
+    navigate('/welcome');
   };
 
 

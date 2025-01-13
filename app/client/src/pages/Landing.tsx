@@ -1,9 +1,15 @@
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Github, Mail } from "lucide-react";
 import WhyUs from "../components/cards/(landing)/WhyUs";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function Landing() {
 
+  const [token, setToken] = useState('');
+
+  useEffect(()=>{
+    setToken(localStorage.getItem('token') || '');
+  },[])
 
   const scrollTo = (id : string) => {
     const element = document.getElementById(id);
@@ -28,7 +34,7 @@ return (
               <button className="border border-black px-3 py-2 rounded flex items-center" onClick={() => scrollTo("features")}>
                 Learn More <ArrowDown/>
               </button>
-              <Link to="/signup">
+              <Link to={token!=='' ? '/dashboard' :  '/signup'}>
               <button className="bg-[#8CC2F2] text-black px-3 py-2 rounded flex items-center hover:bg-[#8CC2F2]/90">
                 Get Started<ArrowUpRight />
               </button>

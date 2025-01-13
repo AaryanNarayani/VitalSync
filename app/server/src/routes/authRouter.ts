@@ -5,6 +5,7 @@ import passport from "passport";
 import nodemailer from "nodemailer";
 import jwt from "jsonwebtoken";
 import { authMiddleware } from "../middleware/authMiddleware";
+import { get } from "http";
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -12,6 +13,10 @@ interface VerificationData {
   code: string;
   expiryTime: number;
   currentEmail?: string;
+}
+
+interface AuthUser {
+  email: string;
 }
 
 const verificationCodes: Map<string, VerificationData> = new Map();
@@ -136,18 +141,27 @@ router.post(
       });
       verificationCodes.delete(email);
 
-      res.json({ token });
+      res.json({ token , isOnboarded: user.isOnboarded });
     } catch (error) {
       res.status(500).json({ error: "Verification failed" });
     }
   }
 );
 
-router.post("/validate", authMiddleware, (req: Request, res: Response) => {
+router.post("/validate", authMiddleware, async (req: Request, res: Response) => {
   try {
+    const prisma = getPrisma();
+    const verifiedUser = req.user as AuthUser;
+    const isOnboarded = await prisma.user.findFirst({
+      where: {
+        email: verifiedUser.email,
+      },
+    });
+
     res.status(200).json({
       msg: "User is authenticated",
       ok: true,
+      isOnboarded: isOnboarded?.isOnboarded,
     });
   } catch (error) {
     res.status(401).json({
