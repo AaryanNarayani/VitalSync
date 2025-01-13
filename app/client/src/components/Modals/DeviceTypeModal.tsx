@@ -14,7 +14,7 @@ const getName = (deviceNameSelected: string): string | undefined => {
   return undefined;
 };
 
-const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected, setDeviceConnected }: any) => {
+const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected, setDeviceConnected ,setallDevicesPaired}: any) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
@@ -64,7 +64,7 @@ const DeviceTypeModal = ({ deviceNameSelected, setdeviceTypeSelected, setDeviceC
 
   const handleConnect = () => {
     setIsLoading(true);
-
+    setallDevicesPaired((prev: any) => [...prev, deviceName]);
     setTimeout(() => {
       setIsLoading(false);
       setIsConnected(true);

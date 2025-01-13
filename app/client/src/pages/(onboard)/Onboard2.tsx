@@ -24,7 +24,8 @@ const Onboard2 = () => {
   const [deviceNameSelected, setdeviceNameSelected] = useState<string>('');
   const [deviceConnected, setDeviceConnected] = useState(false)
 
-  const allDevicesPaired : any = [];
+  const [allDevicesPaired, setallDevicesPaired] = useState<any>([])
+
 
   const handleModal2Close = () => {
     setDeviceHasSelected(true)
@@ -45,9 +46,9 @@ const Onboard2 = () => {
     setToken(localStorage.getItem('token') || '');
   },[])
 
-  useEffect(() => {
-    allDevicesPaired.push(deviceNameSelected);
-  }, [deviceNameSelected]);
+  // useEffect(() => {
+  //   allDevicesPaired.push(deviceNameSelected);
+  // }, [deviceNameSelected]);
 
   console.log(allDevicesPaired)
 
@@ -90,7 +91,7 @@ const Onboard2 = () => {
   return (
     <div>
       <div className="bg-[--primary-background] w-[100vw] h-[100vh] flex items-center justify-center">
-        <div className="bg-[--secondary-background] h-[330px] w-[450px] border border-gray border-opacity-55 rounded-md flex flex-col shadow-lg">
+        <div className="bg-[--secondary-background] h-[330px] w-[450px] border border-gray border-opacity-55 rounded-md flex flex-col shadow-lg translate-y-[-15%]">
           {devicehasSelected && (
             <>
               <div className="w-[90%] mx-auto flex flex-col mt-[40px]">
@@ -485,6 +486,8 @@ const Onboard2 = () => {
           deviceNameSelected={deviceNameSelected}
           setdeviceTypeSelected={handleDeviceTypeModalClose} 
           setDeviceConnected={setDeviceConnected}
+          setallDevicesPaired={setallDevicesPaired}
+          
         />
       }
     </div>
