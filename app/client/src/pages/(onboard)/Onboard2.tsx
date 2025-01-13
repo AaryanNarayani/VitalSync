@@ -33,7 +33,6 @@ const Onboard2 = () => {
   }
   const onboardState = useSelector((state: any) => state.onboardState);
   const [token, setToken] = useState('');
-
   const setDeviceType = (deviceType: string) => {
     setdeviceNameSelected(deviceType);
     setdeviceTypeSelected(true);
