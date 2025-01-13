@@ -115,7 +115,9 @@ console.log('this is from redux',userState);
             Sleep
             <MoonStar size={20} />
           </h1>
+
           <CircularProgressBar percentage={sleepPrecentage} size={200} value={userState?.user?.details.sleepCycle}/>
+
         </div>
 
         <div className="bg-[--card-background] rounded-xl flex flex-col gap-4 items-center p-2">
