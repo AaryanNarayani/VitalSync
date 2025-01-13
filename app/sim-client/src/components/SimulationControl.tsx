@@ -149,19 +149,23 @@ export default function SimulationControl() {
         )}
       </div>
 
-      <div className="bg-secondary-background p-6 rounded-lg shadow-lg mb-6">
-        <h2 className="text-2xl font-bold mb-4 text-primary">Choose Your Devices</h2>
+      <div className="bg-secondary-background p-6 rounded-lg shadow-lg mb-6 bg-white">
+        {/* <h2 className="text-2xl font-bold mb-4 text-primary">Choose Your Devices</h2> */}
         <div className="flex space-x-4">
           {["Smartwatch", "App", "Ring"].map((device) => (
-            <div key={device} className="flex items-center">
-              <Checkbox
-                id={device}
-                checked={selectedDevices.includes(device)}
-                onCheckedChange={() => handleDeviceChange(device)}
-              />
-              <Label htmlFor={device} className="ml-2">
+            <div key={device} className="flex items-center bg-white">
+              <button
+                onClick={() => handleDeviceChange(device)}
+                className={`border py-2 px-4 rounded-lg transition-all duration-200 ${
+                  selectedDevices.includes(device)
+                    ? device === "Smartwatch" || "App" || "Ring"
+                      ? "bg-gradient-to-r from-[--primary] to-[--secondary] "
+                      : "bg-gray-100 border-gray-500 text-gray-700"
+                    : "bg-white text-gray-600 hover:bg-gray-50"
+                }`}
+              >
                 {device}
-              </Label>
+              </button>
             </div>
           ))}
         </div>
