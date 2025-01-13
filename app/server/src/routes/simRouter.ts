@@ -1,7 +1,7 @@
-// import express from 'express';
+import express from 'express';
 // import { authMiddleware } from '../middleware/authMiddleware';
 // import { getPrisma } from '../utils/getPrisma';
-// const router = express.Router();
+const router = express.Router();
 
 // interface AuthUser {
 //     email: string;
@@ -68,4 +68,4 @@
 
 // // Ring
 
-// export { router as simRouter };
+export { router as simRouter };
