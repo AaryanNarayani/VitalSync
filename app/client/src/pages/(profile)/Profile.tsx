@@ -36,8 +36,8 @@ function Profile() {
   
     handleGetUserData();
   }, [token]);
-  
-  console.log('this is from redux',userState);
+   
+  console.log('This is from redux',userState);
   console.log(userState?.user?.name);
   
 
