@@ -1,4 +1,4 @@
-function HydrationCard() {
+function HydrationCard({data} : any) {
   const hydrationLevel = 856;
 
   return (
@@ -24,7 +24,7 @@ function HydrationCard() {
 
         {/* Hydration Amount */}
         <div className="flex flex-col items-center -space-y-1">
-          <p className="text-[25px]">{hydrationLevel}</p>
+          <p className="text-[25px]">{data}</p>
           <h1 className="text-[15px]">ml</h1>
         </div>
 

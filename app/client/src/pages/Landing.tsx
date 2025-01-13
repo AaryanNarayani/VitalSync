@@ -3,6 +3,14 @@ import WhyUs from "../components/cards/(landing)/WhyUs";
 import { Link } from "react-router-dom";
 
 function Landing() {
+
+
+  const scrollTo = (id : string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }
 return (
     <>
       <div className="min-h-screen flex items-center relative">
@@ -17,7 +25,7 @@ return (
               <p className="text-md italic">Your AI Health Partner, 24/7 </p>
             </div>
             <div className="flex gap-4">
-              <button className="border border-black px-3 py-2 rounded flex items-center">
+              <button className="border border-black px-3 py-2 rounded flex items-center" onClick={() => scrollTo("features")}>
                 Learn More <ArrowDown/>
               </button>
               <Link to="/signup">
@@ -35,7 +43,7 @@ return (
         />
       </div>
       {/* Why us */}
-      <div className="bg-gradient-to-r from-[--secondary] to-[--primary] min-h-[50vh] flex items-center relative flex-col py-32 px-72 gap-10">
+      <div id="features" className="bg-gradient-to-r from-[--secondary] to-[--primary] min-h-[50vh] flex items-center relative flex-col py-32 px-72 gap-10">
         <div className="flex justify-between w-full ">
           <h1 className="text-4xl">Why Us?</h1>
           <div className="flex gap-3">
