@@ -25,6 +25,7 @@ import { BASE_URL } from "../utils";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../redux/slice/UserSlice";
 import { RootState } from "../redux/store";
+import CircularProgressBar from "../components/ui/CircularProgressBar";
 
 function DashBoard() {
   const [token, setToken] = useState("");
@@ -52,6 +53,8 @@ useEffect(() => {
 
   handleGetUserData();
 }, [token]);
+
+const sleepPrecentage = ((userState.user?.details.sleepCycle || 0) / 8) * 100;
 
 console.log('this is from redux',userState);
   return (
@@ -107,11 +110,12 @@ console.log('this is from redux',userState);
           <AIsuggestionCard />
         </div>
 
-        <div className="bg-[--card-background] rounded-xl">
+        <div className="bg-[--card-background] rounded-xl flex flex-col justify-center items-center">
           <h1 className="text-[20px] w-full text-center p-3 flex gap-3 items-center justify-center">
             Sleep
             <MoonStar size={20} />
           </h1>
+          <CircularProgressBar percentage={sleepPrecentage} size={200} value={userState?.user?.details.sleepCycle}/>
         </div>
 
         <div className="bg-[--card-background] rounded-xl flex flex-col gap-4 items-center p-2">
