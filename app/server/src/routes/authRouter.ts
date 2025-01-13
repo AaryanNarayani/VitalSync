@@ -141,7 +141,7 @@ router.post(
       });
       verificationCodes.delete(email);
 
-      res.json({ token });
+      res.json({ token , isOnboarded: user.isOnboarded });
     } catch (error) {
       res.status(500).json({ error: "Verification failed" });
     }
