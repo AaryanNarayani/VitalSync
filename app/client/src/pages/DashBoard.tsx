@@ -25,6 +25,7 @@ import { BASE_URL } from "../utils";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../redux/slice/UserSlice";
 import { RootState } from "../redux/store";
+import CircularProgressBar from "../components/ui/CircularProgressBar";
 
 function DashBoard() {
   const [token, setToken] = useState("");
@@ -112,6 +113,7 @@ console.log('this is from redux',userState);
             Sleep
             <MoonStar size={20} />
           </h1>
+          <CircularProgressBar percentage={10} title={"Sleep"} value={userState?.user?.details.sleepCycle} unit={"hrs"}/>
         </div>
 
         <div className="bg-[--card-background] rounded-xl flex flex-col gap-4 items-center p-2">
