@@ -2,7 +2,7 @@ export default [
     {
         title: "Fitbit Watch",
         name : "isFitbit",
-        img : "/Onboarding/Devices/FitBit.png",
+        img : "/Onboarding/Devices/Fitbit.png",
     },
     {
         title: "Apple Watch",
