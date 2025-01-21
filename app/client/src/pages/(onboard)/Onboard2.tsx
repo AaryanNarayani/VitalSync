@@ -33,6 +33,11 @@ const Onboard2 = () => {
   }
   const onboardState = useSelector((state: any) => state.onboardState);
   const [token, setToken] = useState('');
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
   const setDeviceType = (deviceType: string) => {
     setdeviceNameSelected(deviceType);
     setdeviceTypeSelected(true);
