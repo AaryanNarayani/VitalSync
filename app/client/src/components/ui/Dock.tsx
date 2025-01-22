@@ -34,9 +34,7 @@ function Dock() {
     },
   ];
   return (
-    <div className="flex items-center justify-center w-full">
       <FloatingDock mobileClassName="translate-y-20" items={links} />
-    </div>
   );
 }
 export default Dock;

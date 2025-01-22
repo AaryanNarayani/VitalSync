@@ -54,6 +54,8 @@ useEffect(() => {
   handleGetUserData();
 }, [token]);
 
+const sleepPrecentage = ((userState.user?.details.sleepCycle || 0) / 8) * 100;
+
 console.log('this is from redux',userState);
   return (
     <div className="h-[100vh] w-[100vw] p-10 flex gap-5">
@@ -73,11 +75,12 @@ console.log('this is from redux',userState);
           </div>
         </div>
 
-        <div className="row-start-2 col-span-2 bg-[--card-background] p-4">
-          <h1 className="w-full text-[20px] text-center flex gap-3 items-center justify-center">
+        <div className="row-start-2 col-span-2 bg-[--card-background] rounded-lg justify-between flex flex-col p-7">
+          <h1 className="w-full text-[25px] text-center flex flex-col gap-3 items-center justify-center">
             Analytics
-            <ChartPie size={20} />
+            {/* <ChartPie size={20} /> */}
           </h1>
+            <img src="/dashbaord/analytics.svg" alt="" className='h-[200px]'/>
         </div>
 
         <div className="row-start-1 row-span-2 col-start-4 bg-[--card-background] p-4 rounded-xl flex flex-col gap-3">
@@ -108,12 +111,14 @@ console.log('this is from redux',userState);
           <AIsuggestionCard />
         </div>
 
-        <div className="bg-[--card-background] rounded-xl">
+        <div className="bg-[--card-background] rounded-xl flex flex-col justify-center items-center">
           <h1 className="text-[20px] w-full text-center p-3 flex gap-3 items-center justify-center">
             Sleep
             <MoonStar size={20} />
           </h1>
-          <CircularProgressBar percentage={10} title={"Sleep"} value={userState?.user?.details.sleepCycle} unit={"hrs"}/>
+
+          <CircularProgressBar percentage={sleepPrecentage} size={200} value={userState?.user?.details.sleepCycle}/>
+
         </div>
 
         <div className="bg-[--card-background] rounded-xl flex flex-col gap-4 items-center p-2">

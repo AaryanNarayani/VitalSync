@@ -14,7 +14,7 @@ import { toast } from "sonner";
 
 const Onboard2 = () => {
   const [toggelDrawer, setToggelDrawer] = useState(false);
-  const [selectedModal, setSelectedModal] = useState<string | null>(null);
+  // const [selectedModal, setSelectedModal] = useState<string | null>(null);
   const [isApple, setIsApple] = useState<Boolean>(false);
   const [isAndroid, setIsAndroid] = useState<Boolean>(false);
   const [isRing, setIsRing] = useState<Boolean>(false);
@@ -23,6 +23,9 @@ const Onboard2 = () => {
   const [deviceTypeSelected, setdeviceTypeSelected] = useState<Boolean>(false);
   const [deviceNameSelected, setdeviceNameSelected] = useState<string>('');
   const [deviceConnected, setDeviceConnected] = useState(false)
+
+  const [allDevicesPaired, setallDevicesPaired] = useState<any>([])
+
 
   const handleModal2Close = () => {
     setDeviceHasSelected(true)
@@ -33,19 +36,21 @@ const Onboard2 = () => {
   }
   const onboardState = useSelector((state: any) => state.onboardState);
   const [token, setToken] = useState('');
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
   const setDeviceType = (deviceType: string) => {
     setdeviceNameSelected(deviceType);
     setdeviceTypeSelected(true);
+  
   };
 
   useEffect(()=>{
     setToken(localStorage.getItem('token') || '');
   },[])
+
+  // useEffect(() => {
+  //   allDevicesPaired.push(deviceNameSelected);
+  // }, [deviceNameSelected]);
+
+  console.log(allDevicesPaired)
 
   const handleSelection = (type: string) => {
     setToggelDrawer(false);
@@ -81,10 +86,12 @@ const Onboard2 = () => {
     handleModal2Close();
   }
 
+  console.log(deviceNameSelected)
+
   return (
     <div>
       <div className="bg-[--primary-background] w-[100vw] h-[100vh] flex items-center justify-center">
-        <div className="bg-[--secondary-background] h-[330px] w-[450px] border border-gray border-opacity-55 rounded-md flex flex-col shadow-lg">
+        <div className="bg-[--secondary-background] h-[330px] w-[450px] border border-gray border-opacity-55 rounded-md flex flex-col shadow-lg translate-y-[-15%]">
           {devicehasSelected && (
             <>
               <div className="w-[90%] mx-auto flex flex-col mt-[40px]">
@@ -110,6 +117,7 @@ const Onboard2 = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-5">
+                {/* {show the device here} */}
                 <div
                   onClick={() => setToggelDrawer(!toggelDrawer)}
                   className="w-[90%] mt-5 h-[50px] mx-auto flex items-center justify-center gap-5"
@@ -120,10 +128,10 @@ const Onboard2 = () => {
                   </button>
                 </div>
                 <div className="flex justify-end w-[95%] mt-4">
-                  <button className={`py-2 w-[30%] rounded-xl px-2 text-lg  to-[--primary] transition duration-300 ease-in-out hover:brightness-90 ${deviceConnected ? 'bg-black text-white' : "bg-gradient-to-r from-[--secondary]"}`}>
+                  <button className={`py-2 w-[30%] rounded-xl px-2 text-lg  to-[--primary] transition duration-300 ease-in-out hover:brightness-90 ${deviceConnected ? 'bg-black text-white' : "bg-gradient-to-r from-[--secondary]"}`} onClick={handleSubmit}>
                    {deviceConnected ? 'Submit': 'Skip' }
                   </button>
-                  <button onClick={handleSubmit}>Submit</button>
+                  {/* <button onClick={handleSubmit}>Submit</button> */}
                 </div>
               </div>
             </>
@@ -478,6 +486,8 @@ const Onboard2 = () => {
           deviceNameSelected={deviceNameSelected}
           setdeviceTypeSelected={handleDeviceTypeModalClose} 
           setDeviceConnected={setDeviceConnected}
+          setallDevicesPaired={setallDevicesPaired}
+          
         />
       }
     </div>
@@ -485,3 +495,4 @@ const Onboard2 = () => {
 };
 
 export default Onboard2;
+

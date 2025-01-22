@@ -7,7 +7,8 @@ const CircularProgressBar = ({
   startAngle = 90, 
   title,
   value,
-  unit
+  unit,
+
 }:any) => {
   const radius = radiusInput;
   const strokeWidth = strokeInput;

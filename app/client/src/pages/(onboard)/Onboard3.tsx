@@ -1,9 +1,7 @@
-import React from 'react'
-
 const Onboard3 = () => {
   return (
     <div>
-      
+      Onboard 3
     </div>
   )
 }
